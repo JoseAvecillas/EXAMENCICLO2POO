@@ -38,12 +38,17 @@ public class RegistroVista extends JFrame {
         String clave = new String(txtClave.getPassword()).trim();
 
         if (usuario.isEmpty() || clave.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios.");
+            JOptionPane.showMessageDialog(this, "⚠️ Todos los campos son obligatorios.");
+            return;
+        }
+
+        if (UsuarioDao.usuarioExiste(usuario)) {
+            JOptionPane.showMessageDialog(this, "⚠️ El usuario ya existe. Intenta con otro nombre.");
             return;
         }
 
         UsuarioDao.guardarUsuario(usuario, clave);
-        JOptionPane.showMessageDialog(this, "Usuario registrado correctamente.");
-        dispose();
+        JOptionPane.showMessageDialog(this, "✅ Usuario registrado correctamente.");
+        dispose(); // Cierra la ventana después del registro
     }
 }
