@@ -10,14 +10,24 @@ public class ReservaController {
     private static final String RUTA = "reservas.txt";
 
     public void guardarReserva(Reserva r) throws IOException {
-        FileWriter fw = new FileWriter(RUTA, true);
+        File archivo = new File(RUTA);
+        if (!archivo.exists()) {
+            archivo.createNewFile();
+        }
+        FileWriter fw = new FileWriter(archivo, true);
         fw.write(r.toString() + "\n");
         fw.close();
     }
 
+
     public List<Reserva> cargarReservas(List<Cliente> clientes, List<Habitacion> habitaciones) throws IOException {
         List<Reserva> lista = new ArrayList<>();
-        BufferedReader br = new BufferedReader(new FileReader(RUTA));
+        File archivo = new File(RUTA);
+        if (!archivo.exists()) {
+            return lista; // Retorna lista vacía si el archivo aún no existe
+        }
+
+        BufferedReader br = new BufferedReader(new FileReader(archivo));
         String linea;
         while ((linea = br.readLine()) != null) {
             String[] partes = linea.split(",");
