@@ -7,12 +7,13 @@ public class LoginVista extends JFrame {
     public JTextField txtUsuario;
     public JPasswordField txtClave;
     public JButton btnLogin;
+    public JButton btnRegistrar; // <--- botón nuevo
 
     public LoginVista() {
         setTitle("Login de Usuario");
         setSize(300, 200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new GridLayout(3, 2));
+        setLayout(new GridLayout(4, 2)); // de 3 a 4 filas
 
         add(new JLabel("Usuario:"));
         txtUsuario = new JTextField();
@@ -24,6 +25,9 @@ public class LoginVista extends JFrame {
 
         btnLogin = new JButton("Iniciar Sesión");
         add(btnLogin);
+
+        btnRegistrar = new JButton("Registrarse"); // <--- nuevo botón
+        add(btnRegistrar);
 
         setLocationRelativeTo(null);
     }
