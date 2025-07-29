@@ -59,3 +59,8 @@ if (!(nueva.getFechaSalida().isBefore(r.getFechaEntrada()) ||
  ┗ 📜usuarios.txt / reservas.txt
 ```
 Desarrollado por Joey Diaz y Jose Avecillas
+
+---
+
+## Video:
+- Link de explicacion en el video: https://youtu.be/tdlhv3YrejM
